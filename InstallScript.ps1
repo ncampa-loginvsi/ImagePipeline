@@ -42,5 +42,5 @@ if ($chocoSuccess) {
         Write-LabsLogs -Message "Notepad++ installed successfully..."
     }
 }
-
+Write-LabsLogs -Message "Exiting..."
 exit 0
