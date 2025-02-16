@@ -42,5 +42,19 @@ if ($chocoSuccess) {
         Write-LabsLogs -Message "Notepad++ installed successfully..."
     }
 }
+
+
+########################################################################################################################################################################################################
+# SYSPREP
+########################################################################################################################################################################################################
+
+Write-LabsLogs -Message "Starting Sysprep process to generalize the VM..."
+
+$sysprepPath = "C:\Windows\System32\Sysprep\sysprep.exe"
+$sysprepArgs = "/oobe /generalize /shutdown"
+
+Start-Process -FilePath $sysprepPath -ArgumentList $sysprepArgs -NoNewWindow -Wait
+
+Write-LabsLogs -Message "VM will shutdown after Sysprep..."
 Write-LabsLogs -Message "Exiting..."
 exit 0
