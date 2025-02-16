@@ -35,8 +35,12 @@ if ($chocoSuccess) {
     $chocoOutput | ForEach-Object { Write-LabsLogs $_ }
     Write-LabsLogs -Message "Completed Notepad++ installation attempt..."
 
+    Start-sleep -Seconds 10
+
     if (Test-Path -Path "C:\Program Files\Notepad++") {
         Write-LabsLogs -Message "Notepad++ detected at C:\Program Files\Notepad++..."
         Write-LabsLogs -Message "Notepad++ installed successfully..."
     }
 }
+
+exit 0
