@@ -1,6 +1,6 @@
 ﻿function Write-LabsLogs {
     param (
-        [string]$message
+        [string]$Message
     )
     
     $logFile = "C:\Labs\Install.log"
@@ -16,7 +16,7 @@
 
 Write-LabsLogs "Installing chocolatey"
 if (-not (Get-Command choco -ErrorAction SilentlyContinue)) {
-    Write-Host "Chocolatey not found, installing..."
+    Write-LabsLogs "Chocolatey not found, installing..."
     Set-ExecutionPolicy Bypass -Scope Process -Force; 
     iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 }
@@ -36,7 +36,7 @@ if ($chocoSuccess) {
     Write-LabsLogs -Message "Completed Notepad++ installation attempt..."
 
     if (Test-Path -Path "C:\Program Files\Notepad++") {
-        Write-Log -Message "Notepad++ detected at C:\Program Files\Notepad++..."
-        Write-Log -Message "Notepad++ installed successfully..."
+        Write-LabsLogs -Message "Notepad++ detected at C:\Program Files\Notepad++..."
+        Write-LabsLogs -Message "Notepad++ installed successfully..."
     }
 }
