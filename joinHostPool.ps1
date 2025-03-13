@@ -2,6 +2,24 @@ param(
     [string]$registrationToken
 )
 
+function Write-LabsLogs {
+    param (
+        [string]$Message
+    )
+    
+    $logFile = "C:\Labs\Install.log"
+    $currentDateTime = Get-Date -Format "MM-dd-yy-THH:mm:ss"
+    $logMessage = "$currentDateTime - Log: $Message"
+
+    if (-not (Test-Path -Path $logFile)) {
+        New-Item -Path $logFile -ItemType File -Force | Out-Null
+    }
+
+    Add-Content -Path $logFile -Value $logMessage
+}
+
+
+
 Install-WindowsFeature -Name RDS-RD-Server
 
 $uris = @(
